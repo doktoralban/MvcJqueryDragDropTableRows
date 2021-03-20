@@ -1,0 +1,32 @@
+USE [dbtestMVC01]
+GO
+/****** Object:  Table [dbo].[tbMvcDragDropTableRows]    Script Date: 20.03.2021 20:34:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbMvcDragDropTableRows](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](150) NULL,
+	[RowNo] [int] NULL,
+	[CellNo] [int] NULL,
+ CONSTRAINT [PK_tbMvcDragDropTableRows] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[tbMvcDragDropTableRows] ON 
+GO
+INSERT [dbo].[tbMvcDragDropTableRows] ([id], [Name], [RowNo], [CellNo]) VALUES (1, N'birinci', 1, 1)
+GO
+INSERT [dbo].[tbMvcDragDropTableRows] ([id], [Name], [RowNo], [CellNo]) VALUES (2, N'ikinci', 2, 2)
+GO
+INSERT [dbo].[tbMvcDragDropTableRows] ([id], [Name], [RowNo], [CellNo]) VALUES (3, N'üçüncü', 3, 3)
+GO
+INSERT [dbo].[tbMvcDragDropTableRows] ([id], [Name], [RowNo], [CellNo]) VALUES (4, N'dördüncü', 4, 4)
+GO
+INSERT [dbo].[tbMvcDragDropTableRows] ([id], [Name], [RowNo], [CellNo]) VALUES (5, N'beşinci', 5, 5)
+GO
+SET IDENTITY_INSERT [dbo].[tbMvcDragDropTableRows] OFF
+GO
