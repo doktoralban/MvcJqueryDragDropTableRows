@@ -1,0 +1,130 @@
+﻿@model IEnumerable<WebMvcPlusJqueryDragDropTableRows.Models.tbMvcDragDropTableRows>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" 
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $("#sortable").sortable({
+
+        });
+
+        @*$("#sortable").sortable({
+            update: function (event, ui) {
+                var ItemidS = ""
+                $("#sortable").find(".taskSingleInLine").each(function () {
+                    var itemId = $(this).attr("data-taskId");
+                    ItemidS = ItemidS + itemId + ",";
+
+                    console.log(ItemidS);
+
+                    //alert('ItemidS -0 : ' + ItemidS);
+                });
+                //alert('ItemidS -1 : ' + ItemidS);
+                $.ajax(
+                    {
+
+
+                        url: '@Url.Action("KaydetDragDrop","DragDrop")',
+                        data: { ItemIDs : ItemidS },
+                        type: 'POST',
+                        success: function(data)
+                        {
+                            //alert('1');
+                        },
+                        error: function (xhr,status,error) {
+                            //alert('0');
+                        }
+                    });
+
+            }
+
+
+        });*@
+
+    });
+
+    function UpdatePosition() {
+       /*  $("#sortable").sortable({*/
+         /*   update: function (event, ui) {*/
+                var ItemidS = ""
+                $("#sortable").find(".taskSingleInLine").each(function () {
+                    var itemId = $(this).attr("data-taskId");
+                    ItemidS = ItemidS + itemId + ",";
+
+                    console.log(ItemidS);
+
+                    //alert('ItemidS -0 : ' + ItemidS);
+                });
+                //alert('ItemidS -1 : ' + ItemidS);
+                $.ajax(
+                    {
+
+
+                        url: '@Url.Action("KaydetDragDrop","DragDrop")',
+                        data: { ItemIDs : ItemidS },
+                        type: 'POST',
+                        success: function(data)
+                        {
+                            //alert('1');
+                        },
+                        error: function (xhr,status,error) {
+                            //alert('0');
+                        }
+                    });
+
+          /*  }*/
+
+
+      /*  });*/
+
+
+        alert('UpdatePosition  ');
+    }
+</script>
+<h1>Index</h1>
+
+<p>
+ 
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RowNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CellNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="sortable" style="cursor:pointer">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="taskSingleInLine" id="task@(item.id)" data-taskId="@(item.id)">
+                    @Html.DisplayFor(modelItem => item.RowNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CellNo)
+                </td>
+                <td>
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+<a class="btn btn-primary" onclick="UpdatePosition();">Kaydet</a>
